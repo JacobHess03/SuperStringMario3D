@@ -9,7 +9,8 @@ word2="MARIO";
 // [Fixed design parameters]
 // Scale for Word 1
 scale_word1 = 1.8;
-// Scala della Parola 2
+
+// Scale for Word 2
 scale_word2 = 2.0;
 // Height scale
 scale_height = 10;
