@@ -1,6 +1,6 @@
 # Super Mario Text
 
-This repository provides two OpenSCAD scripts to generate 3D-printable text with an interlocking brim:
+This repository provides two OpenSCAD scripts to generate 3D-printable text with an interlocking brim or two separated objects:
 
 - **SuperMarioLetters.scad**: Creates the hollow letter shapes, designed to fit seamlessly into the brim.
 - **SuperMarioBrim.scad**: Generates the border (brim) around each letter for added strength and decorative effect.
