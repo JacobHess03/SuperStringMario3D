@@ -13,7 +13,7 @@ scale_word1 = 1.8;
 // Scale for Word 2
 scale_word2 = 2.0;
 // Height scale
-scale_height = 10;
+scale_height = 5;
 
 // Brim radius/offset
 brim_radius = 1.5;
