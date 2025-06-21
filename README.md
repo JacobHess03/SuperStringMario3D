@@ -1,4 +1,4 @@
-# Super Mario Text Brim
+# Super Mario Text
 
 This repository provides two OpenSCAD scripts to generate 3D-printable text with an interlocking brim:
 
