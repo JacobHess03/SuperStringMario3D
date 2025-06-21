@@ -8,30 +8,26 @@ word2="MARIO";
 //-----------------
 // [Fixed design parameters]
 // Scale for Word 1
-scale_word1 = 1.8;
+scale_word1 = 5;
 
 // Scale for Word 2
-scale_word2 = 2.0;
+scale_word2 = 5;
 // Height scale
-scale_height = 5;
+scale_height = 15;
 
 // Brim radius/offset
-brim_radius = 1.5;
+brim_radius = 2;
 
 // Gap between the two words
 gap = 2;
 // Spaziatura tra le lettere
-spacing = 0.0;
-// Thickness of the brim base
-bottom_thickness=2;
+spacing = 1;
+
 
 // Small tolerance to help letters fit into the brim
 wiggle=0.1;
 //-----------------
 
-
-// Wall thickness for hollow letters
-wall_thikness_letter = 2;
 
 //-----------------
 
@@ -653,11 +649,11 @@ function spacing_letter(i, letter, word, scale)
 function total_width(word, scale) = spacing_letter(len(word)-1, str(word[len(word)-1]), word, scale) + width_letter(str(word[len(word)-1])) * scale;
 
 // Main module to render both words
-module main() 
+module letters_main() 
 {
     // Call the words with the specified parameters
     call_words(0, false);
 
 }
 
-main();
+letters_main();

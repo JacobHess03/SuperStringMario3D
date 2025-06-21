@@ -8,25 +8,25 @@ word2 = "MARIO";
 // [Fixed design parameters]
 
 // Scale factor for the first word (word1)
-scale_word1 = 1.8;
+scale_word1 = 5;
 
 // Scale factor for the second word (word2)
-scale_word2 = 2.0;
+scale_word2 = 5;
 
 // Height of the extruded letters
-scale_height = 5.0;
+scale_height = 15.0;
 
 // Height of the brim (the base outline under the letters)
-brim_height = 4.0;
+brim_height = 14;
 
 // Radius/offset for the brim outline
-brim_radius = 1.5;
+brim_radius = 2;
 
 // Vertical gap between the two words
 gap = 2;
 
 // Horizontal spacing between letters
-spacing = 0.0;
+spacing = 1.0;
 
 // Thickness of the base of the brim
 bottom_thickness = 2;
@@ -600,10 +600,10 @@ function spacing_letter(i, letter, word, scale)
 function total_width(word, scale) = spacing_letter(len(word)-1, str(word[len(word)-1]), word, scale) + width_letter(str(word[len(word)-1])) * scale;
 
 // Main module: renders both words with brim only (outline)
-module main() 
+module brim_main() 
 {
     // Only outline
     call_words(brim_height, true);
 }
 
-main();
+brim_main();
