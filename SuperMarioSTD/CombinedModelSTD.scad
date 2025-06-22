@@ -6,19 +6,16 @@
 // If you want only one line, you can leave the second word empty.
 word1="SUPER";
 word2="GIACOMO";
-// Gap between the two words
-gap_words_letters = 2;
-// Gap between the brim of two words
-gap_words_brim = 2;
-// Space between the letters
-spacing_letters = 0.0;
-// Space between the brim of the letters
-spacing_brim = 0.0;
+
+
 // Space on the place
 spacing_bodies = 150;
 
-module letters_main(word1, word2, gap_words_letters, spacing_letters) {
-
+module letters_main(word1, word2) {
+    // Gap between the two words
+    gap_words_letters = 2;
+    // Space between the letters
+    spacing_letters = 0.0;
     // CONSTANTS
     // The following values are model constants and are not intended to be changed by the end user.
     //-----------------
@@ -38,9 +35,9 @@ module letters_main(word1, word2, gap_words_letters, spacing_letters) {
     wiggle=0.1;
     //-----------------
 
-
+    gap = gap_words_letters;
     //-----------------
-
+    spacing = spacing_letters;
     // Path data for letters and symbols
     glyph_A = [
         [449, 741], [765, 52], [463, 4], [439, 181], [196, 187], [141, -2], [-150, 50], [249, 721], [449, 741]
@@ -664,9 +661,13 @@ module letters_main(word1, word2, gap_words_letters, spacing_letters) {
 }
 
 // Begin SuperMarioBrim.scad content
-module brim_main(word1, word2, gap_words_brim, spacing_bodies) {
+module brim_main(word1, word2) {
 
+    // Gap between the brim of two words
+    gap_words_brim = 2;
 
+    // Space between the brim of the letters
+    spacing_brim = 0.0;
     // The following values are model constants and are not intended to be changed by the end user.
     //-----------------
     // [Fixed design parameters]
@@ -692,7 +693,9 @@ module brim_main(word1, word2, gap_words_brim, spacing_bodies) {
     // Small tolerance to help letters fit into the brim
     wiggle = 0.1;
 
+    gap = gap_words_brim;
 
+    spacing = spacing_brim;
 
 
     //-----------------
@@ -1267,9 +1270,9 @@ module brim_main(word1, word2, gap_words_brim, spacing_bodies) {
 tool_header = "$fn = 100;";
 union() {
 	translate(v = [-spacing_bodies, 0, 0]) {
-		letters_main(word1, word2, gap_words_letters, spacing_letters);
+		letters_main(word1, word2);
 	}
 	translate(v = [spacing_bodies, 0, 0]) {
-		brim_main(word1, word2, gap_words_brim, spacing_brim);
+		brim_main(word1, word2);
 	}
 }
