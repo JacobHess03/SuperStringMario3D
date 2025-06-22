@@ -1,18 +1,22 @@
-module letters_main() {
+// Choose your custom words and write them in UPPERCASE.
+// If you want only one line, you can leave the second word empty.
+word1="SUPER";
+word2="MARIO";
+
+module letters_main(word1, word2) {
     // Choose your custom words and write them in UPPERCASE.
     // If you want only one line, you can leave the second word empty.
-    word1="SUPER";
-    word2="MARIO";
+
 
     // CONSTANTS
     // The following values are model constants and are not intended to be changed by the end user.
     //-----------------
     // [Fixed design parameters]
     // Scale for Word 1
-    scale_word1 = 1.8;
+    scale_word1 = 5;
 
     // Scale for Word 2
-    scale_word2 = 2.0;
+    scale_word2 = 5;
     // Height scale
     scale_height = 1;
 
@@ -657,21 +661,20 @@ module letters_main() {
 }
 
 // Begin SuperMarioBrim.scad content
-module brim_main() {
+module brim_main(word1, word2) {
     // Choose your custom words and write them in UPPERCASE.
     // If you want only one line, you can leave the second word empty.
-    word1 = "SUPER";
-    word2 = "MARIO";
+
 
     // The following values are model constants and are not intended to be changed by the end user.
     //-----------------
     // [Fixed design parameters]
 
     // Scale factor for the first word (word1)
-    scale_word1 = 1.8;
+    scale_word1 = 5;
 
     // Scale factor for the second word (word2)
-    scale_word2 = 2.0;
+    scale_word2 = 5;
 
     // Height of the extruded letters
     scale_height = 5.0;
@@ -1262,15 +1265,14 @@ module brim_main() {
     // Only outline
     call_words(brim_height, true);
 }
-
-// Combined entry point
-tool_header = "$fn = 100;";
+// Set global resolution directly at top of file:
+$fn = 100;
 
 union() {
 	translate(v = [-0.0010000000, 0, 10.0300000000]) {
-		letters_main();
+		letters_main(word1, word2);
 	}
 	translate(v = [0.0010000000, 0, 0]) {
-		brim_main();
+		brim_main(word1, word2);
 	}
 }
