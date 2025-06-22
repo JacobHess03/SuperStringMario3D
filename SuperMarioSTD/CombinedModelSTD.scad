@@ -1,11 +1,23 @@
 // If you prefer to embed both modules directly into one SCAD file without import_scad/use statements,
 // simply concatenate their contents and wrap them in a union() in a single main().
 // Begin SuperMarioLetters.scad content
-module letters_main() {
-        // Choose your custom words and write them in UPPERCASE.
-    // If you want only one line, you can leave the second word empty.
-    word1="SUPER";
-    word2="MARIO";
+
+// Choose your custom words and write them in UPPERCASE.
+// If you want only one line, you can leave the second word empty.
+word1="SUPER";
+word2="GIACOMO";
+// Gap between the two words
+gap_words_letters = 2;
+// Gap between the brim of two words
+gap_words_brim = 2;
+// Space between the letters
+spacing_letters = 0.0;
+// Space between the brim of the letters
+spacing_brim = 0.0;
+// Space on the place
+spacing_bodies = 150;
+
+module letters_main(word1, word2, gap_words_letters, spacing_letters) {
 
     // CONSTANTS
     // The following values are model constants and are not intended to be changed by the end user.
@@ -21,12 +33,6 @@ module letters_main() {
 
     // Brim radius/offset
     brim_radius = 2;
-
-    // Gap between the two words
-    gap = 2;
-    // Spaziatura tra le lettere
-    spacing = 1;
-
 
     // Small tolerance to help letters fit into the brim
     wiggle=0.1;
@@ -658,11 +664,8 @@ module letters_main() {
 }
 
 // Begin SuperMarioBrim.scad content
-module brim_main() {
-    // Choose your custom words and write them in UPPERCASE.
-    // If you want only one line, you can leave the second word empty.
-    word1 = "SUPER";
-    word2 = "MARIO";
+module brim_main(word1, word2, gap_words_brim, spacing_bodies) {
+
 
     // The following values are model constants and are not intended to be changed by the end user.
     //-----------------
@@ -682,12 +685,6 @@ module brim_main() {
 
     // Radius/offset for the brim outline
     brim_radius = 2;
-
-    // Vertical gap between the two words
-    gap = 2;
-
-    // Horizontal spacing between letters
-    spacing = 1.0;
 
     // Thickness of the base of the brim
     bottom_thickness = 2;
@@ -1269,10 +1266,10 @@ module brim_main() {
 // Combined entry point
 tool_header = "$fn = 100;";
 union() {
-	translate(v = [-100.0000000000, 0, 0]) {
-		letters_main();
+	translate(v = [-spacing_bodies, 0, 0]) {
+		letters_main(word1, word2, gap_words_letters, spacing_letters);
 	}
-	translate(v = [100.0000000000, 0, 0]) {
-		brim_main();
+	translate(v = [spacing_bodies, 0, 0]) {
+		brim_main(word1, word2, gap_words_brim, spacing_brim);
 	}
 }

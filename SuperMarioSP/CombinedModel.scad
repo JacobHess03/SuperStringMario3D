@@ -4,11 +4,17 @@ word1="SUPER";
 word2="MARIO";
 
 // Gap between the two words
-gap = 2;
-// Spaziatura tra le lettere
-spacing = 0.0;
+gap_words_letters = 2;
+// Gap between the brim of two words
+gap_words_brim = 2;
+// Space between the letters
+spacing_letters = 0.0;
+// Space between the brim of the letters
+spacing_brim = 0.0;
 
-module letters_main(word1, word2, gap, spacing) {
+
+
+module letters_main(word1, word2, gap_words_letters, spacing_letters) {
     // Choose your custom words and write them in UPPERCASE.
     // If you want only one line, you can leave the second word empty.
 
@@ -28,12 +34,12 @@ module letters_main(word1, word2, gap, spacing) {
     // Brim radius/offset
     brim_radius = 1.5;
 
-
+    gap = gap_words_letters;
     // Small tolerance to help letters fit into the brim
     wiggle=0.1;
     //-----------------
 
-
+    spacing = spacing_letters;
     // Wall thickness for hollow letters
     wall_thikness_letter = 2;
 
@@ -661,7 +667,7 @@ module letters_main(word1, word2, gap, spacing) {
 }
 
 // Begin SuperMarioBrim.scad content
-module brim_main(word1, word2, gap, spacing) {
+module brim_main(word1, word2, gap_words_brim, spacing_brim) {
     // Choose your custom words and write them in UPPERCASE.
     // If you want only one line, you can leave the second word empty.
 
@@ -686,10 +692,10 @@ module brim_main(word1, word2, gap, spacing) {
     brim_radius = 1.5;
 
     // Vertical gap between the two words
-    gap = 2;
+    gap = gap_words_brim;
 
     // Horizontal spacing between letters
-    spacing = 0.0;
+    spacing =  spacing_brim;
 
     // Thickness of the base of the brim
     bottom_thickness = 10.00001;
@@ -1270,9 +1276,9 @@ $fn = 100;
 
 union() {
 	translate(v = [-0.0010000000, 0, 10.0300000000]) {
-		letters_main(word1, word2, gap, spacing);
+		letters_main(word1, word2, gap_words_letters, spacing_letters);
 	}
 	translate(v = [0.0010000000, 0, 0]) {
-		brim_main(word1, word2, gap, spacing);
+		brim_main(word1, word2, gap_words_brim, spacing_brim);
 	}
 }
