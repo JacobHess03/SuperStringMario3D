@@ -3,7 +3,12 @@
 word1="SUPER";
 word2="MARIO";
 
-module letters_main(word1, word2) {
+// Gap between the two words
+gap = 2;
+// Spaziatura tra le lettere
+spacing = 0.0;
+
+module letters_main(word1, word2, gap, spacing) {
     // Choose your custom words and write them in UPPERCASE.
     // If you want only one line, you can leave the second word empty.
 
@@ -22,11 +27,6 @@ module letters_main(word1, word2) {
 
     // Brim radius/offset
     brim_radius = 1.5;
-
-    // Gap between the two words
-    gap = 2;
-    // Spaziatura tra le lettere
-    spacing = 0.0;
 
 
     // Small tolerance to help letters fit into the brim
@@ -661,7 +661,7 @@ module letters_main(word1, word2) {
 }
 
 // Begin SuperMarioBrim.scad content
-module brim_main(word1, word2) {
+module brim_main(word1, word2, gap, spacing) {
     // Choose your custom words and write them in UPPERCASE.
     // If you want only one line, you can leave the second word empty.
 
@@ -1270,9 +1270,9 @@ $fn = 100;
 
 union() {
 	translate(v = [-0.0010000000, 0, 10.0300000000]) {
-		letters_main(word1, word2);
+		letters_main(word1, word2, gap, spacing);
 	}
 	translate(v = [0.0010000000, 0, 0]) {
-		brim_main(word1, word2);
+		brim_main(word1, word2, gap, spacing);
 	}
 }
