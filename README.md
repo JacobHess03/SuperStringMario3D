@@ -9,8 +9,8 @@ This repository provides two OpenSCAD scripts to generate 3D-printable text with
 
 1. **Clone the repo**
    ```bash
-   git clone https://github.com/<your-username>/OpenScadSuperMario.git
-   cd OpenScadSuperMario
+   git clone https://github.com/<your-username>/SuperStringMario3D.git
+   cd SuperStringMario3D
 
 ## Customize words
 
